@@ -1,0 +1,18 @@
+<%= form_for @episode do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br/>
+  <%= f.label :runtime %>
+  <%= f.number_field :runtime %><br/>
+  <%= f.label :date %>
+  <%= f.date_select :date %><br/>
+  <%= f.label :show %>
+  <%= f.collection_select(:show_id, @shows, :id, :title, prompt: true) %><br/>
+
+  <h4>Actors:</h4>
+  <% @actors.each do |actor| %>
+    <%= label_tag actor.id, actor.name %>
+    <%= check_box("episode", "actors", {:multiple => true}, actor.id, nil) %><br/>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,26 @@
+<h1>Details for <%= @show.title %></h1>
+
+<p><%= @show.description %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Runtime</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @show.episodes.each do |episode| %>
+      <tr>
+        <td><%= link_to episode.title, episode_path(episode) %></td>
+        <td><%= episode.runtime %></td>
+        <td><%= episode.date_formatted %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table><br>
+
+<%= link_to "Edit this show", edit_show_path(@show) %><br>
+<%= link_to "Back to show index", shows_path %><br>
+<%= button_to "Delete", @show, method: :delete, data: { confirm: "Really?" } %>

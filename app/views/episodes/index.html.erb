@@ -1,0 +1,15 @@
+<h1>Episodes</h1>
+
+<%= form_tag(episodes_search_path, method: "get") do %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% @shows.each do |show| %>
+<h2><%= link_to show.title, show_path(show) %></h2>
+  <ul>
+    <% show.episodes.each do |episode| %>
+      <li><%= link_to episode.title, episode_path(episode) %></li>
+    <% end %>
+  </ul>
+<% end %>

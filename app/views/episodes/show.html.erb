@@ -1,0 +1,20 @@
+<h1>Details for <%= @episode.title %> (<%= @episode.show.title %> episode)</h1>
+
+<h2>Aired: <%= @episode.date_formatted %></h2>
+
+<h3>Actors</h3>
+<table>
+  <tbody>
+    <% @episode.actors.each do |actor| %>
+      <tr>
+        <td><%= link_to actor.name, actor_path(actor) %></td>
+        <td><%= image_tag actor.photo, alt: actor.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "Edit this episode", edit_episode_path(@episode) %><br>
+<%= link_to "Back to episode index", episodes_path %><br>
+<%= button_to "Delete", @episode, method: :delete, data: { confirm: "Really?" } %>

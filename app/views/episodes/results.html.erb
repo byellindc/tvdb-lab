@@ -1,0 +1,6 @@
+<h1> Search Results for "<%= @query %>"</h1>
+<ul>
+  <% @episodes.each do |episode| %>
+    <li><%= link_to "#{episode.show.title}: #{episode.title}", episode_path(episode) %></li>
+  <% end %>
+</ul>
